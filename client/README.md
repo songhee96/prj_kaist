@@ -22,8 +22,10 @@
 #### Install List
 
 - antd
+- apexcharts
 - http-proxy-middleware
 - moment-timezone
+- react-apexcharts
 - react-dom
 - react-live-clock
 - react-moment
