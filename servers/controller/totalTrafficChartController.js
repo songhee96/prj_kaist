@@ -18,8 +18,8 @@ const getTotalTrafficChartData = async (req, res) => {
     }
     var txTrafficData = [];
     var rxTrafficData = [];
-    for (let i = 0; i < txBits.length; i++) {
-      var timeData = Unix_timestampConv(txBits[i].log_dt.getTime());
+    for (let i = 0; i < traffic.length; i++) {
+      var timeData = Unix_timestampConv(traffic[i].log_dt.getTime());
       var txData =
         Number(traffic[i].tx_bits) +
         Number(traffic[i].bcst_tx) +
