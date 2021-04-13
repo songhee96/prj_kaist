@@ -184,13 +184,14 @@ export default class NextUI extends React.Component {
       }
     };
 
-    const sampleEvtHandlers = {
-      LinkEvents: {
-        clickLink: (sender, event) => {
-          console.log(sender, event, "확인");
-        },
-      },
-    };
+    // const sampleEvtHandlers = {
+    //   LinkEvents: {
+    //     clickLink: (sender, event) => {
+    //       console.log(sender, event, "확인");
+    //     },
+    //   },
+    // };
+
     // const sampleEvtHandlers = {
     //   clickLink: (sender, event) => {
     //     console.log(`${event.id()} Click Link`);
@@ -206,7 +207,7 @@ export default class NextUI extends React.Component {
           <NextContainer
             topologyData={sampleTopology}
             topologyConfig={sampleConfig}
-            eventHandlers={sampleEvtHandlers}
+            // eventHandlers={sampleEvtHandlers}
             style={{ width: "100%", height: "100%" }}
           />
         </div>
