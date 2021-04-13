@@ -12,6 +12,7 @@ const tbRouter = require("./routes/tbRouter");
 const rawDataLastRouter = require("./routes/rawDataLastRouter");
 const treeRouter = require("./routes/treeRouter");
 const topologyRouter = require("./routes/topologyRouter");
+const totalTrafficChartRouter = require("./routes/totalTrafficChartRouter");
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -44,7 +45,10 @@ app.get(routes.getRawDataLast, rawDataLastRouter);
 app.get(routes.updateRawDataLast, rawDataLastRouter);
 
 app.get(routes.getTree, treeRouter);
+
 app.get(routes.getTopology, topologyRouter);
+
+app.get(routes.getTotalTrafficChartData, totalTrafficChartRouter);
 
 app.listen(port, () => {
   console.log(`express is running on ${port}`);
