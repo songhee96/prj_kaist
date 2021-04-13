@@ -2,21 +2,49 @@
 
 .ant-layout-header {
   width: 100%;
-  height: 100px;
+  height: 50px;
 
   padding: 0px 20px;
   box-sizing: border-box;
 }
 
 .header {
+  width: 100%;
   height: 100%;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
+.kaist_logo_wrap {
+  width: 400px;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.kaist_logo {
+  width: 150px;
+  height: 35px;
+}
+
 .header_txt {
+  height: 35px;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+
+  margin-left: 10px;
+
+  color: var(--white-color);
+}
+
+/* .header_txt {
   white-space: nowrap;
   font-weight: bold;
   position: absolute;
@@ -24,23 +52,11 @@
   top: 3px;
 
   font-size: 1.1rem;
-}
-
-.kaist_logo_wrap {
-  width: 150px;
-  height: 45px;
-}
-
-.kaist_logo {
-  width: 150px;
-  left: 50px;
-  top: 30px;
-  position: absolute;
-}
+} */
 
 .nav_wrap {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 45px;
 }
 
 .nav {
@@ -48,18 +64,39 @@
 
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+}
+
+.nav > a > li {
+  height: 45px;
+
+  line-height: 45px;
+
+  font-weight: normal;
+  color: var(--white-color);
+}
+
+.nav > a > li:hover {
+  color: var(--hover-color);
+
+  border-bottom: 2px solid var(--hover-color);
+}
+
+.nav > a.active > li {
+  color: #177ddc;
+
+  border-bottom: 2px solid var(--hover-color);
 }
 
 .ant-menu {
   font-size: 15px;
+
   background: none;
 }
 
 .ant-menu-horizontal {
   border-bottom: 0px;
-  padding-top: 54px;
 }
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item,
@@ -88,7 +125,6 @@
 
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: start;
-  margin-top: 10px;
+  justify-content: flex-end;
+  align-items: center;
 }

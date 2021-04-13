@@ -8,6 +8,8 @@ export default class MM01 extends React.Component {
   constructor(props) {
     super(props);
 
+    this.reference = React.createRef();
+
     this.state = {
       title: "트래픽",
 
