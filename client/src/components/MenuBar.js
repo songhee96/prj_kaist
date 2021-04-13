@@ -14,8 +14,10 @@ export default class MenuBar extends React.Component {
           <div className="header">
             <div className="kaist_logo_wrap">
               <NavLink exact to="/">
-                <img className="kaist_logo" src={logo} alt="KAIST_LOGO" />
-                <span className="header_txt">HCA200bps 관리시스템</span>
+                <div className="logi_wraps">
+                  <img className="kaist_logo" src={logo} alt="KAIST_LOGO" />
+                  <span className="header_txt">HCA200bps 관리시스템</span>
+                </div>
               </NavLink>
             </div>
 
