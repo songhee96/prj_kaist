@@ -1,0 +1,54 @@
+@charset "utf-8";
+@import "./reset.css";
+@import "./MenuBar.css";
+
+@import "./MM00.css";
+@import "./MM01.css";
+
+@import "./MM02Chart.css";
+
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --grey-color: #acacac;
+  --table-header-color: #262626;
+  --border-color: #4e4e4e;
+  --hover-color: #1890ff;
+}
+
+#app {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+}
+
+.bread_crumb {
+  font-weight: bold;
+
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.diagram-component {
+  width: 900px;
+  height: 500px;
+
+  border: 1px solid black;
+  background: white;
+}
+
+.apexcharts-canvas {
+  color: var(--black-color);
+}
+
+.n-topology-tooltip .popover-content {
+  color: var(--black-color);
+}

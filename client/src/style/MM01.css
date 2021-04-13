@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/* 상세정보 Modal */
+.ant-modal {
+  width: 850px !important;
+}
+
+.MM01_detail_table {
+  width: 100%;
+
+  border-top: 1px solid var(--grey-color);
+  border-bottom: 1px solid var(--grey-color);
+}
+
+.MM01_detail_table tbody tr th,
+.MM01_detail_table tbody tr td {
+  padding: 8px 20px;
+
+  box-sizing: border-box;
+}
+
+.MM01_detail_table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.MM01_detail_table tbody tr:last-child {
+  border-bottom: 0px;
+}
+
+.MM01_detail_table tbody tr th {
+  width: 40%;
+
+  border-right: 1px solid var(--border-color);
+  background: var(--table-header-color);
+}
+
+.red {
+  color: red;
+}
+.orange {
+  color: orange;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.ant-card-body {
+  height: 600px;
+}
+
+/* MM02 */
+#chart {
+  display: flex;
+  justify-content: center;
+}
+
+.ant-table-tbody > tr > td {
+  border: none;
+}
+
+.apexcharts-legend,
+.apexcharts-toolbar,
+.apexcharts-grid,
+.apexcharts-xaxis,
+.apexcharts-yaxis,
+.ant-pagination {
+  visibility: hidden;
+  display: none;
+}
