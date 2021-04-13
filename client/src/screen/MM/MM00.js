@@ -53,7 +53,7 @@ export default class MM00 extends React.Component {
           <Card>
             <div className="content_wrap">
               <Row gutter={[20, 20]}>
-                <Col span={3}>
+                {/* <Col span={3}>
                   <Card className="kaist_text_wrap">
                     <Tree
                       onExpand={this.onExpand}
@@ -63,9 +63,9 @@ export default class MM00 extends React.Component {
                       onSelect={this._treeDetail}
                     />
                   </Card>
-                </Col>
+                </Col> */}
 
-                <Col span={21}>
+                <Col span={24}>
                   <Card className="topolog_wrap">
                     <div className="MM00_topology_wrap">
                       <NextUI />

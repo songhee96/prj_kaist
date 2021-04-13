@@ -1,49 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { NavLink } from "react-router-dom";
+import { Layout } from "antd";
 import Clock from "react-live-clock";
-import logo from ".././style/images/kaist_logo.png"
+import logo from ".././style/images/kaist_logo.png";
 
 const { Header } = Layout;
 
 export default class MenuBar extends React.Component {
-  state = { current: "1" };
-
   render() {
-    const { current } = this.state;
-
     return (
       <>
         <Header className="MenuBar_wrap">
           <div className="header">
             <div className="kaist_logo_wrap">
-              <img
-                className="kaist_logo"
-                src={logo}
-                alt="KAIST_LOGO"
-              />
+              <NavLink exact to="/">
+                <div className="logi_wraps">
+                  <img className="kaist_logo" src={logo} alt="KAIST_LOGO" />
+                  <span className="header_txt">HCA200bps 관리시스템</span>
+                </div>
+              </NavLink>
             </div>
 
-            <p className="header_txt">HCA200bps 관리시스템</p>
-
             <div className="nav_wrap">
-              <Menu
-                selectedKeys={[current]}
-                mode="horizontal"
-                className="nav"
-                onClick={this._menuClickHandler}
-              >
-                <Menu.Item key="1">
-                  <Link to="/">메인화면</Link>
-                </Menu.Item>
-                <Menu.Item key="2">
-                  <Link to="/MM01">이벤트</Link>
-                </Menu.Item>
-                <Menu.Item key="3">
-                  <Link to="MM02">트래픽</Link>
-                </Menu.Item>
-                
-              </Menu>
+              <ul className="nav">
+                <NavLink exact to="/">
+                  <li>메인화면</li>
+                </NavLink>
+                <NavLink exact to="/MM01">
+                  <li>이벤트</li>
+                </NavLink>
+                <NavLink exact to="/MM02">
+                  <li>트래픽</li>
+                </NavLink>
+              </ul>
             </div>
 
             <div className="nav_right">
@@ -54,12 +43,4 @@ export default class MenuBar extends React.Component {
       </>
     );
   }
-
-  _menuClickHandler = (event) => {
-    console.log("Click", event.key);
-
-    this.setState({
-      current: event.key,
-    });
-  };
 }

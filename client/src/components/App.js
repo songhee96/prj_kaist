@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { MM00, MM01, MM02, MM02Chart } from "../screen";
+import { MM00, MM01, MM02 } from "../screen";
 import MenuBar from "./MenuBar";
 import { Layout } from "antd";
 
@@ -19,7 +19,6 @@ export default class App extends React.Component {
             <Route exact path="/" component={MM00} />
             <Route exact path="/MM01" component={MM01} />
             <Route exact path="/MM02" component={MM02} />
-            <Route exact path="/MM02Chart" component={MM02Chart} />
           </Content>
         </Layout>
       </>
