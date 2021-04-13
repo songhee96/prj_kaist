@@ -49,7 +49,7 @@ export default class MM01 extends React.Component {
     } = this.state;
 
     const trafficColumns = [
-      { title: "디바이스", dataIndex: "device", align: "center" },
+      { title: "디바이스", dataIndex: "gxpci_ethernet", align: "center" },
       { title: "인터페이스", dataIndex: "interfaces", align: "center" },
       {
         title: "Rx | Tx",
@@ -67,6 +67,7 @@ export default class MM01 extends React.Component {
 
     return (
       <>
+        {/* {console.log(trafficHistoryList, "트래픽 테이블 정보 확인")} */}
         <div className="MM01 pages">
           <Breadcrumb className="bread_crumb">
             <Breadcrumb.Item>{title}</Breadcrumb.Item>
@@ -131,12 +132,12 @@ export default class MM01 extends React.Component {
     );
   }
 
-  //   트래픽 탭 데이터 가져옴
+  //   트래픽 데이터 가져옴
   _getTrafficeHistoryList = async () => {
     await fetch("/api/getRawData")
       .then((res) => res.json())
       .then((data) =>
-        // console.log(data, "이력 > 이벤트")
+        // console.log(data, "트래픽 데이터 확인")
         this.setState({
           trafficHistoryList: data.rawDatas,
         })
