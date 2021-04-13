@@ -1,18 +1,41 @@
 .MM00 {
   width: 100%;
+  height: 100vh;
+
+  max-height: calc(100vh - 45px);
+}
+
+.topology_wrap {
+  width: 100%;
+  height: 550px;
+}
+
+.topology_wrap .ant-card-body {
+  width: 100%;
+  height: 100%;
 }
 
 .MM00_topology_wrap {
-  width: 100%;
-  height: 500px;
-}
-
-.MM00_topology_wrap > div {
   width: 100%;
   height: 100%;
 }
 
 .MM00_topology_wrap > .n-topology.n-topology-blue {
+  width: 100%;
+  height: 100%;
+}
+
+.traffic_chart_wrap {
+  width: 100%;
+  height: 500px;
+}
+
+.traffic_chart_wrap .ant-card-body {
+  width: 100%;
+  height: 100%;
+}
+
+.MM00_traffic_chart {
   width: 100%;
   height: 100%;
 }

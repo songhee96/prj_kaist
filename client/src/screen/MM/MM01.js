@@ -67,7 +67,6 @@ export default class MM01 extends React.Component {
     } = this.state;
 
     const eventColumns = [
-      { title: "idx", dataIndex: "idx", align: "center" },
       {
         title: "이벤트 발생 시각",
         dataIndex: "log_dt",
@@ -106,7 +105,6 @@ export default class MM01 extends React.Component {
       { title: "gxpci_ethernet", dataIndex: "gxpci_ethernet", align: "center" },
       { title: "인터페이스", dataIndex: "interfaces", align: "center" },
       { title: "이벤트 내용", dataIndex: "err_desc", align: "center" },
-      { title: "이벤트 detail", dataIndex: "err_detail", align: "center" },
     ];
 
     // datePicker
