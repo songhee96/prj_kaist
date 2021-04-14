@@ -3,7 +3,8 @@ const postgres = require("../postgres");
 //트래픽
 const getRawData = async (req, res) => {
   try {
-    let sql = "SELECT *FROM metric_mpipe_data_current";
+    let sql =
+      "select * from metric_mpipe_data_current join tb_nodes on metric_mpipe_data_current.gxpci_ethernet = tb_nodes.node_name and metric_mpipe_data_current.interfaces = tb_nodes.port";
     let rawDatas = await postgres(sql);
     // console.log(rawDatas);
     return res.json({ rawDatas });
