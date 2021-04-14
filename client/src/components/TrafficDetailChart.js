@@ -18,7 +18,7 @@ import {
   MultiBrush,
 } from "react-timeseries-charts";
 
-const rawTrarricData = require("./TotalTrafficHCA1.json");
+const rawTrarricData = require("./TrafficChartData.json");
 
 const trafficRXseries = new TimeSeries({
   name: "trafficRX",
@@ -56,7 +56,7 @@ const trackerStyle = {
   },
 };
 
-export default class traffic extends React.Component {
+export default class trafficDetail extends React.Component {
   state = {
     tracker: null,
     timerange: trafficSeries.range(),

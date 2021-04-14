@@ -4,10 +4,10 @@ const postgres = require("../postgres");
 const getRawData = async (req, res) => {
   try {
     let trafficMpipeSql =
-      "select * from metric_mpipe_data_current join tb_nodes on metric_mpipe_data_current.gxpci_ethernet = tb_nodes.gxpci_ethernet and metric_mpipe_data_current.interfaces = tb_nodes.port order by node_name ";
+      "select * from metric_mpipe_data_current join tb_nodes on metric_mpipe_data_current.gxpci_ethernet = tb_nodes.gxpci_ethernet and metric_mpipe_data_current.interfaces = tb_nodes.port order by node_name";
     let trafficMpipe = await postgres(trafficMpipeSql);
     let trafficTrioSql =
-      "select * from metric_trio_data_current left join (select DISTINCT node_name, gxpci_ethernet, capacity from tb_nodes)as foo using (gxpci_ethernet)  order by node_name";
+      "select * from metric_trio_data_current left join (select DISTINCT node_name, gxpci_ethernet, capacity from tb_nodes)as foo using (gxpci_ethernet) order by node_name";
     let trafficTrio = await postgres(trafficTrioSql);
     // console.log(trafficTrio[1]);
 

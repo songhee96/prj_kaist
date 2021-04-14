@@ -27,7 +27,8 @@ const routes = {
 
   getTopology: "/api/getTopology",
 
-  getTotalTrafficChartData: "/api/getTotalTrafficChartData",
+  getTotalTrafficHAC1Data: "/api/getTotalTrafficHAC1Data",
+  getTotalTrafficHAC2Data: "/api/getTotalTrafficHAC2Data",
   getTrafficChartData: "/api/getTrafficChartData",
 };
 

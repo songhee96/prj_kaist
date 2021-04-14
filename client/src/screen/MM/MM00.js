@@ -14,7 +14,7 @@ export default class MM00 extends React.Component {
   state = {};
 
   componentDidMount = () => {
-    // this._getTrafficData();
+    this._getTrafficData();
   };
 
   render() {
@@ -49,9 +49,21 @@ export default class MM00 extends React.Component {
     );
   }
 
-  // TotalTrafficChart 데이터 가져오기
+  // TotalTrafficHAC1데이터 가져오기
   _getTrafficData = async () => {
-    await axios.get("/api/getTotalTrafficChartData").then((res) => {
+    await axios.get("/api/getTotalTrafficHAC1Data").then((res) => {
+      if (res.status === 200) {
+        // console.log("TotalTrafficChart 데이터");
+        this.setState({
+          txTrafficData: res.data.txTrafficData,
+          rxTrafficData: res.data.rxTrafficData,
+        });
+      }
+    });
+  };
+  //Total TrafficHAC2데이터
+  _getTrafficData2 = async () => {
+    await axios.get("/api/getTotalTrafficHAC2Data").then((res) => {
       if (res.status === 200) {
         // console.log("TotalTrafficChart 데이터");
         this.setState({

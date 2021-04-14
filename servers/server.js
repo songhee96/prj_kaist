@@ -48,7 +48,8 @@ app.get(routes.getTree, treeRouter);
 
 app.get(routes.getTopology, topologyRouter);
 
-app.get(routes.getTotalTrafficChartData, totalTrafficChartRouter);
+app.get(routes.getTotalTrafficHAC1Data, totalTrafficChartRouter);
+app.get(routes.getTotalTrafficHAC2Data, totalTrafficChartRouter);
 app.post(routes.getTrafficChartData, totalTrafficChartRouter);
 
 app.listen(port, () => {

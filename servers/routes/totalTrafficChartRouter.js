@@ -5,8 +5,13 @@ const totalTrafficChartController = require("../controller/totalTrafficChartCont
 const totalTrafficChartRouter = express.Router();
 
 totalTrafficChartRouter.get(
-  routes.getTotalTrafficChartData,
-  totalTrafficChartController.getTotalTrafficChartData
+  routes.getTotalTrafficHAC1Data,
+  totalTrafficChartController.getTotalTrafficHAC1Data
+);
+
+totalTrafficChartRouter.get(
+  routes.getTotalTrafficHAC2Data,
+  totalTrafficChartController.getTotalTrafficHAC2Data
 );
 totalTrafficChartRouter.post(
   routes.getTrafficChartData,
