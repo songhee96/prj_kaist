@@ -49,8 +49,9 @@ export default class MM01 extends React.Component {
     } = this.state;
 
     const trafficColumns = [
-      { title: "디바이스", dataIndex: "gxpci_ethernet", align: "center" },
-      { title: "인터페이스", dataIndex: "interfaces", align: "center" },
+      { title: "DEVICE", dataIndex: "gxpci_ethernet", align: "center" },
+      { title: "LINK", dataIndex: "interfaces", align: "center" },
+      { title: "INTERFACE", dataIndex: "interfaces", align: "center" },
       {
         title: "Rx | Tx (bits)",
         dataIndex: "",
@@ -61,28 +62,51 @@ export default class MM01 extends React.Component {
           };
         },
       },
+      { title: "Rx | Tx (bcst)", dataIndex: "capacity", align: "center" },
+      { title: "Rx | Tx (mcst)", dataIndex: "capacity", align: "center" },
       {
-        title: "Rx | Tx (bcst)",
-        dataIndex: "",
+        title: "Rx | Tx (IP err)",
+        dataIndex: "tx_err",
         align: "center",
-        render() {
+        render(text) {
           return {
-            children: <TrafficChart />,
+            props: {
+              style: {
+                color:
+                  parseInt(text) > 84
+                    ? "red"
+                    : parseInt(text) > 70
+                    ? "orange"
+                    : "yellow",
+              },
+            },
+            children: <div>{text}</div>,
           };
         },
       },
       {
-        title: "Rx | Tx (mcst)",
-        dataIndex: "",
+        title: "Rx | Tx (TCP err)",
+        dataIndex: "tx_err",
         align: "center",
-        render() {
+        render(text) {
           return {
-            children: <TrafficChart />,
+            props: {
+              style: {
+                color:
+                  parseInt(text) > 84
+                    ? "red"
+                    : parseInt(text) > 70
+                    ? "orange"
+                    : "yellow",
+              },
+            },
+            children: <div>{text}</div>,
           };
         },
       },
+      
       {
-        title: "Rx | Tx (err)",
+        title: "Rx | Tx (UDP err)",
         dataIndex: "tx_err",
         align: "center",
         render(text) {

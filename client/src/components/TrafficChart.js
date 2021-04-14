@@ -37,9 +37,6 @@ export default class TrafficChart extends React.Component {
             show: true
           }
         },
-        xaxis: {
-          categories: ['June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        },
       },
   
   
