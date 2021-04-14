@@ -54,29 +54,8 @@
   color: #228be6;
 }
 
-.col-md-4 {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* chart */
-#chart {
-  margin-top: -60px;
-  margin-right: -20px;
-  padding-top: -20px;
-  width: 100px;
-  height: 100px;
-  outline: 1px solid blue;
-}
-
-.ant-table-tbody > tr > td {
-  border: none;
-}
-
-.apexcharts-legend,
-.apexcharts-toolbar,
-.apexcharts-grid,
-.apexcharts-xaxis,
-.apexcharts-yaxis {
-  visibility: hidden;
-  display: none;
+.MM02_traffic_wrap li {
+  display: flex;
+  justify-content: center;
+  padding-right: 5px;
 }
