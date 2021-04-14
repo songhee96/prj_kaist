@@ -53,31 +53,52 @@ export default class MM01 extends React.Component {
       { title: "인터페이스", dataIndex: "interfaces", align: "center" },
       {
         title: "Rx | Tx (bits)",
-        dataIndex: "",
+        dataIndex: "rx_bits",
         align: "center",
-        render() {
+        render(rx_bits, rafficHistoryList) {
           return {
-            children: <TrafficChart />,
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.rx_bits}
+                  tx={rafficHistoryList.tx_bits}
+                />
+              </div>
+            ),
           };
         },
       },
       {
         title: "Rx | Tx (bcst)",
-        dataIndex: "",
+        dataIndex: "bcst_tx",
         align: "center",
-        render() {
+        render(bcst_tx, rafficHistoryList) {
           return {
-            children: <TrafficChart />,
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.bcst_rx}
+                  tx={rafficHistoryList.bcst_tx}
+                />
+              </div>
+            ),
           };
         },
       },
       {
         title: "Rx | Tx (mcst)",
-        dataIndex: "",
+        dataIndex: "mcst_rx",
         align: "center",
-        render() {
+        render(mcst_rx, rafficHistoryList) {
           return {
-            children: <TrafficChart />,
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.mcst_rx}
+                  tx={rafficHistoryList.mcst_tx}
+                />
+              </div>
+            ),
           };
         },
       },
