@@ -1,10 +1,6 @@
 @charset "utf-8";
 
 /* 상세정보 Modal */
-.ant-modal {
-  width: 850px !important;
-}
-
 .MM01_detail_table {
   width: 100%;
 
@@ -63,8 +59,7 @@
 .apexcharts-toolbar,
 .apexcharts-grid,
 .apexcharts-xaxis,
-.apexcharts-yaxis,
-.ant-pagination {
+.apexcharts-yaxis {
   visibility: hidden;
   display: none;
 }
