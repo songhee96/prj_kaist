@@ -49,7 +49,7 @@ export default class MM01 extends React.Component {
     } = this.state;
 
     const trafficColumns = [
-      { title: "디바이스", dataIndex: "gxpci_ethernet", align: "center" },
+      { title: "디바이스", dataIndex: "node_name", align: "center" },
       { title: "인터페이스", dataIndex: "interfaces", align: "center" },
       {
         title: "Rx | Tx (bits)",
@@ -199,7 +199,7 @@ export default class MM01 extends React.Component {
       .then((data) =>
         // console.log(data, "트래픽 데이터 확인")
         this.setState({
-          trafficHistoryList: data.rawDatas,
+          trafficHistoryList: data.trafficData,
         })
       );
   };
