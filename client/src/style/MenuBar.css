@@ -43,12 +43,13 @@
 }
 
 .header_txt {
-  font-size: 1.1rem;
   font-weight: bold;
 
   margin-left: 10px;
 
-  color: var(--white-color);
+  background: linear-gradient(to right, rgb(170, 219, 231), rgb(0, 79, 250));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* .header_txt {

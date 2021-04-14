@@ -79,16 +79,14 @@ const getTrafficChartData = async (req, res) => {
     // let trafficSql = `select * from metric_mpipe_data_history where gxpci_ethernet='gxpci0' and interfaces = 'gbe1' and log_dt between (current_timestamp - interval '1 months') and current_timestamp order by log_dt`;
     let trafficSql = `select * from metric_mpipe_data_history where gxpci_ethernet='${gxpci_ethernet}' and interfaces = '${interfaces}' and log_dt between (current_timestamp - interval '1 months') and current_timestamp order by log_dt`;
     let traffic = await postgres(trafficSql);
-    console.log(traffic, "traffic");
+    console.log(traffic[0], "traffic");
     var txTrafficData = [];
     var rxTrafficData = [];
+
     if (traffic.length == 0) {
-      const jsonData = JSON.parse(
-        fs.readFileSync("././client/src/components/TrafficChartData.json")
-      );
       // console.log(jsonData.traffic.traffic_Rx[0], "jsonData");
 
-      fs.writeFileSync(
+      fs.writeFile(
         "././client/src/components/TrafficChartData.json",
         JSON.stringify({
           begin_time: 1441051972,
@@ -100,8 +98,17 @@ const getTrafficChartData = async (req, res) => {
             traffic_Rx: [[]],
             traffic_Tx: [[]],
           },
-        })
+        }),
+        (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("success");
+          }
+        }
       );
+      // let endInsert = 200;
+      // return res.json({ endInsert });
     } else {
       for (let i = 0; i < traffic.length; i++) {
         var timeData = Unix_timestampConv(traffic[i].log_dt.getTime());
@@ -121,30 +128,33 @@ const getTrafficChartData = async (req, res) => {
         txTrafficData.push(data);
         rxTrafficData.push(data2);
 
-        const jsonData = JSON.parse(
-          fs.readFileSync("././client/src/components/TrafficChartData.json")
-        );
         // console.log(jsonData.traffic.traffic_Rx[0], "jsonData");
 
-        for (let a = 0; a < jsonData.traffic.traffic_Rx.length; a++) {
-          fs.writeFileSync(
-            "././client/src/components/TrafficChartData.json",
-            JSON.stringify({
-              begin_time: 1441051972,
-              end_time: 1441138372,
-              resource_uri: "",
-              source: "BNL",
-              target: "NEWY",
-              traffic: {
-                traffic_Rx: rxTrafficData,
-                traffic_Tx: txTrafficData,
-              },
-            })
-          );
-        }
-
+        // let endInsert = 200;
+        // return res.json({ endInsert });
         // console.log(txData, "txData");
       }
+      fs.writeFile(
+        "././client/src/components/TrafficChartData.json",
+        JSON.stringify({
+          begin_time: 1441051972,
+          end_time: 1441138372,
+          resource_uri: "",
+          source: "BNL",
+          target: "NEWY",
+          traffic: {
+            traffic_Rx: rxTrafficData,
+            traffic_Tx: txTrafficData,
+          },
+        }),
+        (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("success");
+          }
+        }
+      );
     }
 
     if (txTrafficData.length == 0) {
@@ -154,7 +164,8 @@ const getTrafficChartData = async (req, res) => {
     } else {
       console.log("있다");
     }
-    console.log(txTrafficData);
+    console.log(txTrafficData[0], "txTraffic");
+    console.log(rxTrafficData[0], "rxTraffic");
 
     return res.json({ txTrafficData, rxTrafficData });
   } catch (error) {
