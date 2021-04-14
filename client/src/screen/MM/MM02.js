@@ -4,7 +4,7 @@ import axios from "axios";
 import { Breadcrumb, Card, Table, Modal } from "antd";
 
 import TrafficChart from "../../components/TrafficChart";
-import TotalTrafficChart from "../../components/TotalTrafficChart";
+import TrafficDetailChart from "../../components/TrafficDetailChart";
 
 export default class MM01 extends React.Component {
   constructor(props) {
@@ -145,9 +145,8 @@ export default class MM01 extends React.Component {
         title: "UDP err",
         dataIndex: "tx_err",
         align: "center",
-        render(text, tx_err) {
+        render(text) {
           return {
-            
             props: {
               style: {
                 color:
@@ -224,7 +223,7 @@ export default class MM01 extends React.Component {
               </table>
             </div>
             <div className="MM02_modal_chart_wrap">
-              <TotalTrafficChart />
+              <TrafficDetailChart />
             </div>
           </div>
         </Modal>
