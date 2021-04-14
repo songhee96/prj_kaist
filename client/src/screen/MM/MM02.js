@@ -141,9 +141,8 @@ export default class MM01 extends React.Component {
   };
 
   // 트래픽 행 클릭 > Modal
-  _trafficModalHandler = (data) => {
+  _trafficModalHandler = async (data) => {
     // console.log(data, "트래픽 행 클릭 데이터");
-
     this.setState({
       isTrafficDetail: !this.state.isTrafficDetail,
 
@@ -152,6 +151,24 @@ export default class MM01 extends React.Component {
       modalError: data.udp_cs_err,
       modalCapacity: data.event_type,
     });
+
+    // const inputData = {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     input: {
+    //       gxpci_ethernet: data.gxpci_ethernet,
+    //       interfaces: data.interfaces,
+    //       // equipid: waveEquipId,
+    //       // equipid: "FBG-005",
+    //       // equipid: `${id}`,
+    //       // channel: `${channel}`,
+    //     },
+    //   }),
+    // };
+    // await fetch("/api/getTrafficChartData", inputData)
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data, "트래픽 행 클릭 데이터"));
   };
 
   // 트래픽 Modal 확인, 닫기 클릭
