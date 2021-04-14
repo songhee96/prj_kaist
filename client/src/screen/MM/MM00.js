@@ -14,7 +14,7 @@ export default class MM00 extends React.Component {
   state = {};
 
   componentDidMount = () => {
-    // this._getTrafficData();
+    this._getTrafficData();
   };
 
   render() {
