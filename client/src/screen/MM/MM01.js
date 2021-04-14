@@ -9,7 +9,6 @@ const { RangePicker } = DatePicker;
 
 export default class MM01 extends React.Component {
   state = {
-    title: "이벤트",
     eventHistoryList: [],
     selectedRowKeys: [], // cheeck box
 

@@ -26,11 +26,11 @@ export default class MenuBar extends React.Component {
                 <NavLink exact to="/">
                   <li>메인화면</li>
                 </NavLink>
-                <NavLink exact to="/MM01">
-                  <li>이벤트</li>
-                </NavLink>
                 <NavLink exact to="/MM02">
                   <li>트래픽</li>
+                </NavLink>
+                <NavLink exact to="/MM01">
+                  <li>이벤트</li>
                 </NavLink>
               </ul>
             </div>

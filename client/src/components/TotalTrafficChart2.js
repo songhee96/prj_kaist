@@ -18,7 +18,7 @@ import {
   MultiBrush,
 } from "react-timeseries-charts";
 
-const rawTrarricData = require("./TotalTrafficHCA1.json");
+const rawTrarricData = require("./TotalTrafficHCA2.json");
 
 const trafficRXseries = new TimeSeries({
   name: "trafficRX",

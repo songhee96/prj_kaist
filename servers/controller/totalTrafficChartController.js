@@ -194,7 +194,7 @@ const getTrafficChartData = async (req, res) => {
 const totalTrafficChartController = {
   getTotalTrafficHAC1Data,
   getTotalTrafficHAC2Data,
-  getTrafficChartData,
+  // getTrafficChartData,
 };
 
 module.exports = totalTrafficChartController;
