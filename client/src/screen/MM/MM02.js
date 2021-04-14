@@ -5,27 +5,23 @@ import TrafficChart from "../../components/TrafficChart";
 import TotalTrafficChart from "../../components/TotalTrafficChart";
 
 export default class MM01 extends React.Component {
-  constructor(props) {
-    super(props);
+  reference = React.createRef();
 
-    this.reference = React.createRef();
+  state = {
+    title: "트래픽",
 
-    this.state = {
-      title: "트래픽",
+    // 트래픽 테이블 데이터
+    trafficHistoryList: [],
 
-      // 트래픽 테이블 데이터
-      trafficHistoryList: [],
+    // 트래픽 Modal open
+    isTrafficDetail: false,
 
-      // 트래픽 Modal open
-      isTrafficDetail: false,
-
-      // 트래픽 Modal 데이터
-      modealDevice: "",
-      modalInterface: "",
-      modalError: "",
-      modalCapacity: "",
-    };
-  }
+    // 트래픽 Modal 데이터
+    modealDevice: "",
+    modalInterface: "",
+    modalError: "",
+    modalCapacity: "",
+  };
 
   componentDidMount() {
     this._getTrafficeHistoryList();
