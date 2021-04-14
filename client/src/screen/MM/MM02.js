@@ -52,7 +52,7 @@ export default class MM01 extends React.Component {
 
     const trafficColumns = [
       { title: "DEVICE", dataIndex: "node_name", align: "center" },
-      { title: "LINK", dataIndex: "interfaces", align: "center" },
+      { title: "SMARTNIC", dataIndex: "gxpci_ethernet", align: "center" },
       { title: "INTERFACE", dataIndex: "interfaces", align: "center" },
       {
         title: "Rx | Tx (bits)",
@@ -61,20 +61,49 @@ export default class MM01 extends React.Component {
         render(rx_bits, rafficHistoryList) {
           return {
             children: (
-              <div className="MM02_traffic_wrap">
-                <TrafficChart
-                  rx={rafficHistoryList.rx_bits}
-                  tx={rafficHistoryList.tx_bits}
-                />
-              </div>
+              <ul className="MM02_traffic_wrap">
+                <li>{rafficHistoryList.rx_bits}</li>
+                <li>|</li>
+                <li>{rafficHistoryList.tx_bits}</li>
+              </ul>
             ),
           };
         },
       },
-      { title: "Rx | Tx (bcst)", dataIndex: "capacity", align: "center" },
-      { title: "Rx | Tx (mcst)", dataIndex: "capacity", align: "center" },
       {
-        title: "Rx | Tx (IP err)",
+        title: "Rx | Tx (bcst)",
+        dataIndex: "bcst_tx",
+        align: "center",
+        render(bcst_tx, rafficHistoryList) {
+          return {
+            children: (
+              <ul className="MM02_traffic_wrap">
+                <li>{rafficHistoryList.bcst_rx}</li>
+                <li>|</li>
+                <li>{rafficHistoryList.bcst_tx}</li>
+              </ul>
+            ),
+          };
+        },
+      },
+      {
+        title: "Rx | Tx (mcst)",
+        dataIndex: "mcst_rx",
+        align: "center",
+        render(mcst_rx, rafficHistoryList) {
+          return {
+            children: (
+              <ul className="MM02_traffic_wrap">
+                <li>{rafficHistoryList.mcst_rx}</li>
+                <li>|</li>
+                <li>{rafficHistoryList.mcst_tx}</li>
+              </ul>
+            ),
+          };
+        },
+      },
+      {
+        title: "IP err",
         dataIndex: "tx_err",
         align: "center",
         render(text) {
@@ -94,7 +123,7 @@ export default class MM01 extends React.Component {
         },
       },
       {
-        title: "Rx | Tx (TCP err)",
+        title: "TCP err",
         dataIndex: "tx_err",
         align: "center",
         render(text) {
@@ -113,9 +142,8 @@ export default class MM01 extends React.Component {
           };
         },
       },
-
       {
-        title: "Rx | Tx (UDP err)",
+        title: "UDP err",
         dataIndex: "tx_err",
         align: "center",
         render(text) {
