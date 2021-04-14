@@ -13,7 +13,6 @@ export default class MM01 extends React.Component {
     this.reference = React.createRef();
 
     this.state = {
-      title: "트래픽",
 
       // 트래픽 테이블 데이터
       trafficHistoryList: [],
