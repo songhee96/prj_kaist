@@ -108,14 +108,16 @@ export default class traffic extends React.Component {
 
     return (
       <div>
+        {/* {console.log(rawTrarricData.traffic, "rawTrarricData")} */}
+        {/* {console.log(this.props.tx, this.props.rx, "확인")} */}
         <div className="row">
           <div className="col-md-4">
             <Legend
               type="swatch"
               style={upDownStyle}
               categories={[
-                { key: "in", label: "Total RX" },
                 { key: "out", label: "Total TX" },
+                { key: "in", label: "Total RX" },
               ]}
             />
           </div>

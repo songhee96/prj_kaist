@@ -6,29 +6,25 @@ import moment from "moment";
 const { RangePicker } = DatePicker;
 
 export default class MM01 extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    title: "이벤트",
+    eventHistoryList: [],
+    selectedRowKeys: [], // cheeck box
 
-    this.state = {
-      title: "이벤트",
-      eventHistoryList: [],
-      selectedRowKeys: [], // cheeck box
+    isDetail: false,
 
-      isDetail: false,
-
-      rcvData: "",
-      rcvPcks: "",
-      multiRcvPcks: "",
-      uniRcvPcks: "",
-      xmitData: "",
-      xmitPcks: "",
-      multiXmitPcks: "",
-      uniXmitPcks: "",
-      rcvErrors: "",
-      xmitWait: "",
-      collectionTime: "",
-    };
-  }
+    rcvData: "",
+    rcvPcks: "",
+    multiRcvPcks: "",
+    uniRcvPcks: "",
+    xmitData: "",
+    xmitPcks: "",
+    multiXmitPcks: "",
+    uniXmitPcks: "",
+    rcvErrors: "",
+    xmitWait: "",
+    collectionTime: "",
+  };
 
   componentDidMount() {
     this._getEventHistoryList();
@@ -67,7 +63,6 @@ export default class MM01 extends React.Component {
     } = this.state;
 
     const eventColumns = [
-      { title: "idx", dataIndex: "idx", align: "center" },
       {
         title: "이벤트 발생 시각",
         dataIndex: "log_dt",
@@ -106,7 +101,6 @@ export default class MM01 extends React.Component {
       { title: "gxpci_ethernet", dataIndex: "gxpci_ethernet", align: "center" },
       { title: "인터페이스", dataIndex: "interfaces", align: "center" },
       { title: "이벤트 내용", dataIndex: "err_desc", align: "center" },
-      { title: "이벤트 detail", dataIndex: "err_detail", align: "center" },
     ];
 
     // datePicker
