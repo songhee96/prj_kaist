@@ -2,7 +2,8 @@
 
 /* 상세정보 Modal */
 .ant-modal {
-  width: 850px !important;
+  width: 1500px !important;
+  padding: 0;
 }
 
 .MM02_detail_table {
@@ -32,4 +33,20 @@
 
   border-right: 1px solid var(--border-color);
   background: var(--table-header-color);
+}
+
+.MM02_modal_table_wrap {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.MM02_modal_table th {
+  width: 150px;
+  font-weight: bold;
+  padding: 5px 10px;
+  color: #228be6;
+}
+
+.col-md-4 {
+  color: rgba(255, 255, 255, 0.8);
 }

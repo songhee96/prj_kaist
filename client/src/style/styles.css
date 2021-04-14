@@ -4,8 +4,7 @@
 
 @import "./MM00.css";
 @import "./MM01.css";
-
-@import "./MM02Chart.css";
+@import "./MM02.css";
 
 :root {
   --white-color: #fff;
