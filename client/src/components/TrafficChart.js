@@ -9,12 +9,12 @@ export default class TrafficChart extends React.Component {
       series: [
         {
           name: "Rx",
-          data: [this.props.rx],
+          data: [this.props.rx ? this.props.rx : 0],
           // data: [400]
         },
         {
           name: "Tx",
-          data: [this.props.tx],
+          data: [this.props.tx ? this.props.tx : 0],
           // data: [-300]
         },
       ],
