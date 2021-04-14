@@ -51,7 +51,7 @@ export default class MM01 extends React.Component {
     } = this.state;
 
     const trafficColumns = [
-      { title: "DEVICE", dataIndex: "gxpci_ethernet", align: "center" },
+      { title: "DEVICE", dataIndex: "node_name", align: "center" },
       { title: "LINK", dataIndex: "interfaces", align: "center" },
       { title: "INTERFACE", dataIndex: "interfaces", align: "center" },
       {
@@ -106,7 +106,7 @@ export default class MM01 extends React.Component {
         },
       },
       {
-        title: "Rx | Tx (UDP err)",
+        title: "UDP err",
         dataIndex: "tx_err",
         align: "center",
         render(text) {
@@ -202,7 +202,7 @@ export default class MM01 extends React.Component {
       if (res.status === 200) {
         // console.log(res.data, "트래픽 데이터 가져옴");
         this.setState({
-          trafficHistoryList: res.data.rawDatas,
+          trafficHistoryList: res.data.trafficData,
         });
       } else {
         alert(
@@ -249,8 +249,6 @@ export default class MM01 extends React.Component {
       })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data, "확인");
-
           this.setState({
             isTrafficDetail: !this.state.isTrafficDetail,
 
