@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 import NextContainer from "react-next-ui";
 import "react-next-ui/build/css/next.min.css";
@@ -217,13 +218,13 @@ export default class NextUI extends React.Component {
 
   // 토폴로지 상태 데이터
   _topoStatus = async () => {
-    await fetch("/api/getTopology")
-      .then((res) => res.json())
-      .then((data) =>
-        // console.log(data, "data")
+    await axios.get("/api/getTopology").then((res) => {
+      if (res.status === 200) {
+        // console.log(res.data, "토폴로지 상태 데이터");
         this.setState({
-          linkState: data.topologyData,
-        })
-      );
+          linkState: res.data.topologyData,
+        });
+      }
+    });
   };
 }
