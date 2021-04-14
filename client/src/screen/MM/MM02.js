@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+
 import { Breadcrumb, Card, Table, Modal } from "antd";
 
 import TrafficChart from "../../components/TrafficChart";
@@ -54,57 +56,55 @@ export default class MM01 extends React.Component {
       { title: "INTERFACE", dataIndex: "interfaces", align: "center" },
       {
         title: "Rx | Tx (bits)",
-        dataIndex: "",
+        dataIndex: "rx_bits",
         align: "center",
-        render() {
+        render(rx_bits, rafficHistoryList) {
           return {
-            children: <TrafficChart />,
-          };
-        },
-      },
-      { title: "Rx | Tx (bcst)", dataIndex: "capacity", align: "center" },
-      { title: "Rx | Tx (mcst)", dataIndex: "capacity", align: "center" },
-      {
-        title: "Rx | Tx (IP err)",
-        dataIndex: "tx_err",
-        align: "center",
-        render(text) {
-          return {
-            props: {
-              style: {
-                color:
-                  parseInt(text) > 84
-                    ? "red"
-                    : parseInt(text) > 70
-                    ? "orange"
-                    : "yellow",
-              },
-            },
-            children: <div>{text}</div>,
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.rx_bits}
+                  tx={rafficHistoryList.tx_bits}
+                />
+              </div>
+            ),
           };
         },
       },
       {
-        title: "Rx | Tx (TCP err)",
-        dataIndex: "tx_err",
+        title: "Rx | Tx (bcst)",
+        dataIndex: "bcst_tx",
         align: "center",
-        render(text) {
+        render(bcst_tx, rafficHistoryList) {
           return {
-            props: {
-              style: {
-                color:
-                  parseInt(text) > 84
-                    ? "red"
-                    : parseInt(text) > 70
-                    ? "orange"
-                    : "yellow",
-              },
-            },
-            children: <div>{text}</div>,
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.bcst_rx}
+                  tx={rafficHistoryList.bcst_tx}
+                />
+              </div>
+            ),
           };
         },
       },
-      
+      {
+        title: "Rx | Tx (mcst)",
+        dataIndex: "mcst_rx",
+        align: "center",
+        render(mcst_rx, rafficHistoryList) {
+          return {
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.mcst_rx}
+                  tx={rafficHistoryList.mcst_tx}
+                />
+              </div>
+            ),
+          };
+        },
+      },
       {
         title: "Rx | Tx (UDP err)",
         dataIndex: "tx_err",
@@ -125,6 +125,7 @@ export default class MM01 extends React.Component {
           };
         },
       },
+      
       { title: "CAPACITY", dataIndex: "capacity", align: "center" },
     ];
 
@@ -197,28 +198,73 @@ export default class MM01 extends React.Component {
 
   //   트래픽 데이터 가져옴
   _getTrafficeHistoryList = async () => {
-    await fetch("/api/getRawData")
-      .then((res) => res.json())
-      .then((data) =>
-        // console.log(data, "트래픽 데이터 확인")
+    await axios.get("/api/getRawData").then((res) => {
+      if (res.status === 200) {
+        // console.log(res.data, "트래픽 데이터 가져옴");
         this.setState({
-          trafficHistoryList: data.rawDatas,
-        })
-      );
+          trafficHistoryList: res.data.rawDatas,
+        });
+      } else {
+        alert(
+          "데이터를 가져오는 도중에 문제가 발생하였습니다. 관리자에게 문의 바랍니다."
+        );
+      }
+    });
   };
 
   // 트래픽 행 클릭 > Modal
-  _trafficModalHandler = (data) => {
+  _trafficModalHandler = async (event) => {
     // console.log(data, "트래픽 행 클릭 데이터");
 
-    this.setState({
-      isTrafficDetail: !this.state.isTrafficDetail,
+    // const inputData = {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     input: {
+    //       gxpci_ethernet: data.gxpci_ethernet,
+    //       interfaces: data.interfaces,
+    //     },
+    //   }),
+    // };
 
-      modealDevice: data.gxpci_ethernet,
-      modalInterface: data.interfaces,
-      modalError: data.udp_cs_err,
-      modalCapacity: data.event_type,
-    });
+    // console.log(inputData.body, "트래픽 행 클릭 inputData");
+
+    // await fetch("/api/getTrafficChartData", inputData)
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data, "트래픽 행 클릭 데이터"));
+
+    const inputData = {
+      gxpci_ethernet: event.gxpci_ethernet,
+      interfaces: event.interfaces,
+    };
+
+    // console.log(inputData, "트래픽 행 클릭 전달 데이터");
+
+    await axios
+      .post("/api/getTrafficChartData", {
+        params: { inputData },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data, "확인");
+
+          this.setState({
+            isTrafficDetail: !this.state.isTrafficDetail,
+
+            modealDevice: event.gxpci_ethernet,
+            modalInterface: event.interfaces,
+            modalError: event.udp_cs_err,
+            modalCapacity: event.event_type,
+          });
+        } else {
+          alert(
+            "데이터를 가져오는 도중에 문제가 발생하였습니다. 관리자에게 문의바랍니다."
+          );
+        }
+      });
   };
 
   // 트래픽 Modal 확인, 닫기 클릭

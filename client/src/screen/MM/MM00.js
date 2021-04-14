@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+
 import { Card, Row, Col } from "antd";
 
 import NextUI from "../../components/NextUI";
@@ -36,10 +38,7 @@ export default class MM00 extends React.Component {
                 <Col span={24}>
                   <Card className="traffic_chart_wrap">
                     <div className="MM00_traffic_chart">
-                      <TotalTrafficChart
-                        tx={txTrafficData}
-                        rx={rxTrafficData}
-                      />
+                      <TotalTrafficChart />
                     </div>
                   </Card>
                 </Col>
@@ -53,16 +52,14 @@ export default class MM00 extends React.Component {
 
   // TotalTrafficChart 데이터 가져오기
   _getTrafficData = async () => {
-    // console.log("차트 데이터 가져오기");
-
-    await fetch("/api/getTotalTrafficChartData")
-      .then((res) => res.json())
-      .then((data) =>
-        // console.log(data, "차트 데이터 확인")
+    await axios.get("/api/getTotalTrafficChartData").then((res) => {
+      if (res.status === 200) {
+        // console.log("TotalTrafficChart 데이터");
         this.setState({
-          txTrafficData: data.txTrafficData,
-          rxTrafficData: data.rxTrafficData,
-        })
-      );
+          txTrafficData: res.data.txTrafficData,
+          rxTrafficData: res.data.rxTrafficData,
+        });
+      }
+    });
   };
 }

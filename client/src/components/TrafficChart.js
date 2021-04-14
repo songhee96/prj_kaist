@@ -6,48 +6,62 @@ export default class TrafficChart extends React.Component {
     super(props);
 
     this.state = {
-  
-      series: [{
-        name: 'Rx',
-        data: [400]
-      },
-      {
-        name: 'Tx',
-        data: [-300]
-      }
+      series: [
+        {
+          name: "Rx",
+          data: [this.props.rx],
+          // data: [400]
+        },
+        {
+          name: "Tx",
+          data: [this.props.tx],
+          // data: [-300]
+        },
       ],
       options: {
         chart: {
-          type: 'bar',
+          type: "bar",
           stacked: true,
         },
-        colors: ['#339af0', '#51cf66'],
+        colors: ["#339af0", "#51cf66"],
         plotOptions: {
           bar: {
             horizontal: true,
-            barHeight: '10px',
+            barHeight: "10px",
           },
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         yaxis: {
           reversed: true,
           axisTicks: {
-            show: true
-          }
+            show: true,
+          },
+        },
+        xaxis: {
+          categories: [
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
         },
       },
-  
-  
     };
   }
-
 
   render() {
     return (
       <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="bar"/>
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+        />
       </div>
     );
   }
