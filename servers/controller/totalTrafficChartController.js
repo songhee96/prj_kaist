@@ -43,8 +43,10 @@ const getTotalTrafficChartData = async (req, res) => {
 //트래픽페이지
 const getTrafficChartData = async (req, res) => {
   try {
-    let gxpci_ethernet = req.body.inputData.gxpci_ethernet;
-    let interfaces = req.body.inputData.interfaces;
+    // console.log(req.body.params.inputData);
+
+    let gxpci_ethernet = req.body.params.inputData.gxpci_ethernet;
+    let interfaces = req.body.params.inputData.interfaces;
 
     // let trafficSql = `select * from metric_mpipe_data_history where gxpci_ethernet='gxpci0' and interfaces = 'gbe1' and log_dt between (current_timestamp - interval '1 months') and current_timestamp order by log_dt`;
     let trafficSql = `select * from metric_mpipe_data_history where gxpci_ethernet='${gxpci_ethernet}' and interfaces = '${interfaces}' and log_dt between (current_timestamp - interval '1 months') and current_timestamp order by log_dt`;

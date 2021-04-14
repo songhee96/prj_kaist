@@ -1,6 +1,8 @@
 import React from "react";
-import { Breadcrumb, Card, Table } from "antd";
-import { DatePicker, Space } from "antd";
+import axios from "axios";
+
+import { Breadcrumb, Card, Table, DatePicker, Space } from "antd";
+
 import moment from "moment";
 
 const { RangePicker } = DatePicker;
@@ -148,13 +150,13 @@ export default class MM01 extends React.Component {
 
   //   이벤트 탭 데이터 가져옴
   _getEventHistoryList = async () => {
-    await fetch("/api/getEvent")
-      .then((res) => res.json())
-      .then((data) =>
-        // console.log(data, "이력 > 이벤트")
+    await axios.get("/api/getEvent").then((res) => {
+      if (res.status === 200) {
+        // console.log(res.data, "이벤트 데이터 가져옴");
         this.setState({
-          eventHistoryList: data.events,
-        })
-      );
+          eventHistoryList: res.data.events,
+        });
+      }
+    });
   };
 }
