@@ -98,7 +98,7 @@ export default class MM01 extends React.Component {
           onOk={() => this._modalHandler()}
           onCancel={() => this._modalHandler()}
         >
-          <div>
+          <div className="MM02_modal">
             <div className="MM02_modal_table_wrap">
               <table className="MM02_modal_table">
                 <caption>트래픽 상세 정보</caption>
