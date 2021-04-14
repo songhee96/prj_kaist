@@ -4,52 +4,45 @@ import { Breadcrumb, Card, Tabs, Table, Modal } from "antd";
 const { TabPane } = Tabs;
 
 export default class MM01 extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    title: "트래픽",
+    //트래픽 리스트
+    eventHistoryList: [],
+    trafficHistoryList: [],
+    //트래픽 행 클릭 > 팝업창
+    isDetail: false,
 
-    this.state = {
-      title: "트래픽",
-      //트래픽 리스트
-      eventHistoryList: [],
-      trafficHistoryList: [],
-      //트래픽 행 클릭 > 팝업창
-      isDetail: false,
-
-    
-
-
-      // tx_pkt:"",
-      // tx_bits:"",
-      // rx_pkt:"",
-      // rx_bits:"",
-      // tx_err:"",
-      // rx_err:"",
-      // octets_tx:"",
-      // octets_rx:"",
-      // frames_tx:"",
-      // frames_rx:"",
-      // bcst_tx:"",
-      // bcst_rx:"",
-      // mcst_tx:"",
-      // mcst_rx:"",
-      // pause_tx:"",
-      // pause_rx:"",
-      // ip_header_cs_err:"",
-      // tcp_cs_err:"",
-      // udp_cs_err:"",
-      // rcvData: "",
-      // rcvPcks: "",
-      // multiRcvPcks: "",
-      // uniRcvPcks: "",
-      // xmitData: "",
-      // xmitPcks: "",
-      // multiXmitPcks: "",
-      // uniXmitPcks: "",
-      // rcvErrors: "",
-      // xmitWait: "",
-      // collectionTime: "",
-    };
-  }
+    // tx_pkt:"",
+    // tx_bits:"",
+    // rx_pkt:"",
+    // rx_bits:"",
+    // tx_err:"",
+    // rx_err:"",
+    // octets_tx:"",
+    // octets_rx:"",
+    // frames_tx:"",
+    // frames_rx:"",
+    // bcst_tx:"",
+    // bcst_rx:"",
+    // mcst_tx:"",
+    // mcst_rx:"",
+    // pause_tx:"",
+    // pause_rx:"",
+    // ip_header_cs_err:"",
+    // tcp_cs_err:"",
+    // udp_cs_err:"",
+    // rcvData: "",
+    // rcvPcks: "",
+    // multiRcvPcks: "",
+    // uniRcvPcks: "",
+    // xmitData: "",
+    // xmitPcks: "",
+    // multiXmitPcks: "",
+    // uniXmitPcks: "",
+    // rcvErrors: "",
+    // xmitWait: "",
+    // collectionTime: "",
+  };
 
   componentDidMount() {
     this._getTrafficHistoryList();
@@ -67,7 +60,6 @@ export default class MM01 extends React.Component {
 
       //검색조건
       selectEventType,
-      
 
       // tx_pkt,
       // tx_bits,
@@ -105,23 +97,22 @@ export default class MM01 extends React.Component {
     const trafficColumns = [
       { title: "디바이스", dataIndex: "device", align: "center" },
       { title: "인터페이스", dataIndex: "interfaces", align: "center" },
-    //   { title: "발생시각", dataIndex: "log_dt", align: "center",
-    //     render(log_dt){
-    //       return{
-    //         children:(
-    //           <div>
-    //             {log_dt.substr(0,10)}&nbsp;{log_dt.substr(11,5)}
-    //           </div>
-    //         ),
-    //       };
+      //   { title: "발생시각", dataIndex: "log_dt", align: "center",
+      //     render(log_dt){
+      //       return{
+      //         children:(
+      //           <div>
+      //             {log_dt.substr(0,10)}&nbsp;{log_dt.substr(11,5)}
+      //           </div>
+      //         ),
+      //       };
 
-    //     },
-    // },
+      //     },
+      // },
       { title: "트래픽", dataIndex: "event_type", align: "center" },
       { title: "err", dataIndex: "tx_err", align: "center" },
-     
-      
-     // { title: "보낸패킷", dataIndex: "tx_pkt", align: "center" }
+
+      // { title: "보낸패킷", dataIndex: "tx_pkt", align: "center" }
 
       // { title: "linkspeed", dataIndex: "linkspeed", align: "center" },
       // { title: "link_state", dataIndex: "link_state", align: "center" },
@@ -139,31 +130,30 @@ export default class MM01 extends React.Component {
             <div className="content_wrap">
               <Tabs defaultActiveKey="1" type="card" size="small">
                 <TabPane tab="트래픽" key="2">
-        
-                   <div className="MM01_search_wrap">
+                  <div className="MM01_search_wrap">
                     <div>
-                      <select 
+                      <select
                         name="selectEventType"
-                       // value={selectEventType}
-                        onChange={this._selectChange}>
+                        // value={selectEventType}
+                        onChange={this._selectChange}
+                      >
+                        <option value="">이벤트 종류</option>
 
-                          <option value="">이벤트 종류</option>
-
-                          {selectEventType?selectEventType.map((data)=> data?(
-                            <option value={data}>{data}</option>
-                          ):null
-                          ):null}                       
+                        {selectEventType
+                          ? selectEventType.map((data) =>
+                              data ? <option value={data}>{data}</option> : null
+                            )
+                          : null}
                       </select>
                     </div>
                   </div>
-                
-                  
+
                   <Table
                     size="small"
                     columns={trafficColumns}
                     dataSource={trafficHistoryList}
                     rowKey="idx"
-                    pagination={{ pageSize: 10}}
+                    pagination={{ pageSize: 10 }}
                     scroll={{ y: 800 }}
                     onRow={(data) => ({
                       onClick: () => {
@@ -265,8 +255,6 @@ export default class MM01 extends React.Component {
                   <th>udp_cs_err</th>
                   <td>{udp_cs_err}</td>
                 </tr>
-                
-            
               </tbody>
             </table>
           </div>
@@ -292,7 +280,6 @@ export default class MM01 extends React.Component {
     console.log(data, " 트래픽 > 상세정보");
 
     const {
-      
       tx_pkt,
       rx_pkt,
       tx_bits,
@@ -313,7 +300,6 @@ export default class MM01 extends React.Component {
       tcp_cs_err,
       udp_cs_err,
 
-
       // rcvData,
       // rcvPcks,
       // multiRcvPcks,
@@ -329,30 +315,29 @@ export default class MM01 extends React.Component {
 
     this.setState({
       isDetail: !this.state.isDetail,
-    
-      tx_pkt:data.tx_pkt,
-      rx_pkt:data.rx_pkt,
 
-      tx_bits:data.tx_bits,
-      rx_bits:data.rx_bits,
-      
-      tx_err:data.tx_err,
-      rx_err:data.rx_err,
-      octets_tx:data.octets_tx,
-      octets_rx:data.octets_rx,
-      frames_tx:data.frames_tx,
-      frames_rx:data.frames_rx,
-      bcst_tx:data.bcst_tx,
-      bcst_rx:data.bcst_rx,
-      mcst_tx:data.mcst_tx,
-      mcst_rx:data.mcst_rx,
-      pause_tx:data.pause_tx,
-      pause_rx:data.pause_rx,
-      ip_header_cs_err:data.ip_header_cs_err,
-      tcp_cs_err:data.tcp_cs_err,
-      udp_cs_err:data.udp_cs_err,
+      tx_pkt: data.tx_pkt,
+      rx_pkt: data.rx_pkt,
 
-      
+      tx_bits: data.tx_bits,
+      rx_bits: data.rx_bits,
+
+      tx_err: data.tx_err,
+      rx_err: data.rx_err,
+      octets_tx: data.octets_tx,
+      octets_rx: data.octets_rx,
+      frames_tx: data.frames_tx,
+      frames_rx: data.frames_rx,
+      bcst_tx: data.bcst_tx,
+      bcst_rx: data.bcst_rx,
+      mcst_tx: data.mcst_tx,
+      mcst_rx: data.mcst_rx,
+      pause_tx: data.pause_tx,
+      pause_rx: data.pause_rx,
+      ip_header_cs_err: data.ip_header_cs_err,
+      tcp_cs_err: data.tcp_cs_err,
+      udp_cs_err: data.udp_cs_err,
+
       // rcvData: data.rcv_data.data[0],
       // rcvPcks: data.rcv_pcks,
       // multiRcvPcks: data.multi_rcv_pcks,

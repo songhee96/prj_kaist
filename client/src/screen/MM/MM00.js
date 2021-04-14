@@ -7,14 +7,10 @@ import TotalTrafficChart from "../../components/TotalTrafficChart";
 import "antd/dist/antd.dark.css";
 
 export default class MM00 extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      txTrafficData: [],
-      rxTrafficData: [],
-    };
-  }
+  state = {
+    txTrafficData: [],
+    rxTrafficData: [],
+  };
 
   componentDidMount = () => {
     this._getTrafficData();
@@ -43,7 +39,6 @@ export default class MM00 extends React.Component {
                       <TotalTrafficChart
                         tx={txTrafficData}
                         rx={rxTrafficData}
-                        dd={"ddd"}
                       />
                     </div>
                   </Card>
