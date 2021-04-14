@@ -1,4 +1,5 @@
 const postgres = require("../postgres");
+const fs = require("fs");
 
 function Unix_timestampConv(a) {
   return Math.floor(a / 1000);
@@ -32,8 +33,33 @@ const getTotalTrafficChartData = async (req, res) => {
 
       // console.log(txData, "txData");
     }
-    console.log(txTrafficData, rxTrafficData);
+    // console.log(txTrafficData, rxTrafficData);
 
+    const jsonData = JSON.parse(
+      fs.readFileSync("././client/src/components/TotalTrafficData.json")
+    );
+    // console.log(jsonData.traffic.traffic_Rx[0], "jsonData");
+
+    for (let a = 0; a < jsonData.traffic.traffic_Rx.length; a++) {
+      fs.writeFileSync(
+        "././client/src/components/TotalTrafficData.json",
+        JSON.stringify({
+          begin_time: 1441051972,
+          end_time: 1441138372,
+          resource_uri: "",
+          source: "BNL",
+          target: "NEWY",
+          traffic: {
+            traffic_Rx: rxTrafficData,
+            traffic_Tx: txTrafficData,
+          },
+        })
+      );
+    }
+    // for(let a= 0 ; a<jsonData.traffic.traffic_Rx.length; a++){
+    //   jsonData.traffic.traffic_Rx[a]=rxTrafficData
+    // }
+    // console.log(rxTrafficData[0], "rxTrafficData");
     return res.json({ txTrafficData, rxTrafficData });
   } catch (error) {
     console.log(error);
@@ -71,6 +97,28 @@ const getTrafficChartData = async (req, res) => {
 
       txTrafficData.push(data);
       rxTrafficData.push(data2);
+
+      const jsonData = JSON.parse(
+        fs.readFileSync("././client/src/components/TrafficChartData.json")
+      );
+      // console.log(jsonData.traffic.traffic_Rx[0], "jsonData");
+
+      for (let a = 0; a < jsonData.traffic.traffic_Rx.length; a++) {
+        fs.writeFileSync(
+          "././client/src/components/TrafficChartData.json",
+          JSON.stringify({
+            begin_time: 1441051972,
+            end_time: 1441138372,
+            resource_uri: "",
+            source: "BNL",
+            target: "NEWY",
+            traffic: {
+              traffic_Rx: rxTrafficData,
+              traffic_Tx: txTrafficData,
+            },
+          })
+        );
+      }
 
       // console.log(txData, "txData");
     }

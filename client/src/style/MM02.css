@@ -60,21 +60,16 @@
 
 /* chart */
 #chart {
-  display: flex;
-  justify-content: center;
-  outline: 1px solid red;
-  width: 300px;
+  margin-top: -60px;
+  margin-right: -20px;
+  padding-top: -20px;
+  width: 100px;
   height: 100px;
+  outline: 1px solid blue;
 }
 
 .ant-table-tbody > tr > td {
   border: none;
-}
-
-.apexcharts-bar-series,
-.apexcharts-plot-series {
-  outline: 1px solid blue;
-  height: 200px;
 }
 
 .apexcharts-legend,
