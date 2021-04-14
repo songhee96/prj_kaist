@@ -49,6 +49,7 @@ app.get(routes.getTree, treeRouter);
 app.get(routes.getTopology, topologyRouter);
 
 app.get(routes.getTotalTrafficChartData, totalTrafficChartRouter);
+app.post(routes.getTrafficChartData, totalTrafficChartRouter);
 
 app.listen(port, () => {
   console.log(`express is running on ${port}`);

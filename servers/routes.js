@@ -28,6 +28,7 @@ const routes = {
   getTopology: "/api/getTopology",
 
   getTotalTrafficChartData: "/api/getTotalTrafficChartData",
+  getTrafficChartData: "/api/getTrafficChartData",
 };
 
 module.exports = routes;
