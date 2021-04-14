@@ -5,23 +5,27 @@ import TrafficChart from "../../components/TrafficChart";
 import TotalTrafficChart from "../../components/TotalTrafficChart";
 
 export default class MM01 extends React.Component {
-  reference = React.createRef();
+  constructor(props) {
+    super(props);
 
-  state = {
-    title: "트래픽",
+    this.reference = React.createRef();
 
-    // 트래픽 테이블 데이터
-    trafficHistoryList: [],
+    this.state = {
+      title: "트래픽",
 
-    // 트래픽 Modal open
-    isTrafficDetail: false,
+      // 트래픽 테이블 데이터
+      trafficHistoryList: [],
 
-    // 트래픽 Modal 데이터
-    modealDevice: "",
-    modalInterface: "",
-    modalError: "",
-    modalCapacity: "",
-  };
+      // 트래픽 Modal open
+      isTrafficDetail: false,
+
+      // 트래픽 Modal 데이터
+      modealDevice: "",
+      modalInterface: "",
+      modalError: "",
+      modalCapacity: "",
+    };
+  }
 
   componentDidMount() {
     this._getTrafficeHistoryList();
@@ -134,7 +138,7 @@ export default class MM01 extends React.Component {
           onOk={() => this._modalHandler()}
           onCancel={() => this._modalHandler()}
         >
-          <div className="MM02_modal">
+          <div>
             <div className="MM02_modal_table_wrap">
               <table className="MM02_modal_table">
                 <caption>트래픽 상세 정보</caption>
@@ -180,31 +184,17 @@ export default class MM01 extends React.Component {
   };
 
   // 트래픽 행 클릭 > Modal
-  _trafficModalHandler = async (data) => {
+  _trafficModalHandler = (data) => {
     // console.log(data, "트래픽 행 클릭 데이터");
 
-    // this.setState({
-    //   isTrafficDetail: !this.state.isTrafficDetail,
+    this.setState({
+      isTrafficDetail: !this.state.isTrafficDetail,
 
-    //   modealDevice: data.gxpci_ethernet,
-    //   modalInterface: data.interfaces,
-    //   modalError: data.udp_cs_err,
-    //   modalCapacity: data.event_type,
-    // });
-
-    const inputData = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        input: {
-          gxpci_ethernet: data.gxpci_ethernet,
-          interfaces: data.interfaces,
-        },
-      }),
-    };
-    await fetch("/api/getTrafficChartData", inputData)
-      .then((res) => res.json())
-      .then((data) => console.log(data, "트래픽 행 클릭 데이터"));
+      modealDevice: data.gxpci_ethernet,
+      modalInterface: data.interfaces,
+      modalError: data.udp_cs_err,
+      modalCapacity: data.event_type,
+    });
   };
 
   // 트래픽 Modal 확인, 닫기 클릭
