@@ -101,7 +101,7 @@ export default class MM01 extends React.Component {
           };
         },
       },
-      { title: "CAPACITY", dataIndex: "tx_err", align: "center" },
+      { title: "CAPACITY", dataIndex: "capacity", align: "center" },
     ];
 
     return (
