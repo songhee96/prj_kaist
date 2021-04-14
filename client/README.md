@@ -23,10 +23,15 @@
 
 - antd
 - apexcharts
+- axios
+- d3
 - http-proxy-middleware
 - moment-timezone
+- pondjs
 - react-apexcharts
+- react-d3-graph
 - react-dom
+- react-flow-renderer
 - react-live-clock
 - react-moment
 - react-mext-ui

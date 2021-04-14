@@ -3,24 +3,21 @@ import axios from "axios";
 
 import { Card, Row, Col } from "antd";
 
-import NextUI from "../../components/NextUI";
+// import NextUI from "../../components/NextUI";
+import Flow from "../../components/Flow";
+import D3 from "../../components/D3";
 import TotalTrafficChart from "../../components/TotalTrafficChart";
 
 import "antd/dist/antd.dark.css";
 
 export default class MM00 extends React.Component {
-  state = {
-    txTrafficData: [],
-    rxTrafficData: [],
-  };
+  state = {};
 
   componentDidMount = () => {
-    this._getTrafficData();
+    // this._getTrafficData();
   };
 
   render() {
-    const { txTrafficData, rxTrafficData } = this.state;
-
     return (
       <>
         <div className="MM00 pages">
@@ -30,7 +27,9 @@ export default class MM00 extends React.Component {
                 <Col span={24}>
                   <Card className="topology_wrap">
                     <div className="MM00_topology_wrap">
-                      <NextUI />
+                      {/* <NextUI /> */}
+                      <Flow />
+                      {/* <D3 /> */}
                     </div>
                   </Card>
                 </Col>
