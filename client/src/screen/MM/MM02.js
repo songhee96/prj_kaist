@@ -13,7 +13,6 @@ export default class MM01 extends React.Component {
     this.reference = React.createRef();
 
     this.state = {
-      title: "트래픽",
 
       // 트래픽 테이블 데이터
       trafficHistoryList: [],
@@ -146,8 +145,9 @@ export default class MM01 extends React.Component {
         title: "UDP err",
         dataIndex: "tx_err",
         align: "center",
-        render(text) {
+        render(text, tx_err) {
           return {
+            
             props: {
               style: {
                 color:
