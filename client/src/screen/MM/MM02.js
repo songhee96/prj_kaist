@@ -52,7 +52,7 @@ export default class MM01 extends React.Component {
 
     const trafficColumns = [
       { title: "DEVICE", dataIndex: "node_name", align: "center" },
-      { title: "LINK", dataIndex: "interfaces", align: "center" },
+      { title: "SMARTNIC", dataIndex: "gxpci_ethernet", align: "center" },
       { title: "INTERFACE", dataIndex: "interfaces", align: "center" },
       {
         title: "Rx | Tx (bits)",
@@ -61,12 +61,11 @@ export default class MM01 extends React.Component {
         render(rx_bits, rafficHistoryList) {
           return {
             children: (
-              <div className="MM02_traffic_wrap">
-                <TrafficChart
-                  rx={rafficHistoryList.rx_bits}
-                  tx={rafficHistoryList.tx_bits}
-                />
-              </div>
+              <ul className="MM02_traffic_wrap">
+                <li>{rafficHistoryList.rx_bits}</li>
+                <li>|</li>
+                <li>{rafficHistoryList.tx_bits}</li>
+              </ul>
             ),
           };
         },
@@ -78,12 +77,11 @@ export default class MM01 extends React.Component {
         render(bcst_tx, rafficHistoryList) {
           return {
             children: (
-              <div className="MM02_traffic_wrap">
-                <TrafficChart
-                  rx={rafficHistoryList.bcst_rx}
-                  tx={rafficHistoryList.bcst_tx}
-                />
-              </div>
+              <ul className="MM02_traffic_wrap">
+                <li>{rafficHistoryList.bcst_rx}</li>
+                <li>|</li>
+                <li>{rafficHistoryList.bcst_tx}</li>
+              </ul>
             ),
           };
         },
@@ -95,13 +93,52 @@ export default class MM01 extends React.Component {
         render(mcst_rx, rafficHistoryList) {
           return {
             children: (
-              <div className="MM02_traffic_wrap">
-                <TrafficChart
-                  rx={rafficHistoryList.mcst_rx}
-                  tx={rafficHistoryList.mcst_tx}
-                />
-              </div>
+              <ul className="MM02_traffic_wrap">
+                <li>{rafficHistoryList.mcst_rx}</li>
+                <li>|</li>
+                <li>{rafficHistoryList.mcst_tx}</li>
+              </ul>
             ),
+          };
+        },
+      },
+      {
+        title: "IP err",
+        dataIndex: "tx_err",
+        align: "center",
+        render(text) {
+          return {
+            props: {
+              style: {
+                color:
+                  parseInt(text) > 84
+                    ? "red"
+                    : parseInt(text) > 70
+                    ? "orange"
+                    : "yellow",
+              },
+            },
+            children: <div>{text}</div>,
+          };
+        },
+      },
+      {
+        title: "TCP err",
+        dataIndex: "tx_err",
+        align: "center",
+        render(text) {
+          return {
+            props: {
+              style: {
+                color:
+                  parseInt(text) > 84
+                    ? "red"
+                    : parseInt(text) > 70
+                    ? "orange"
+                    : "yellow",
+              },
+            },
+            children: <div>{text}</div>,
           };
         },
       },
@@ -125,7 +162,6 @@ export default class MM01 extends React.Component {
           };
         },
       },
-      
       { title: "CAPACITY", dataIndex: "capacity", align: "center" },
     ];
 
