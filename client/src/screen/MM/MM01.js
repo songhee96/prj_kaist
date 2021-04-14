@@ -6,29 +6,25 @@ import moment from "moment";
 const { RangePicker } = DatePicker;
 
 export default class MM01 extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    title: "이벤트",
+    eventHistoryList: [],
+    selectedRowKeys: [], // cheeck box
 
-    this.state = {
-      title: "이벤트",
-      eventHistoryList: [],
-      selectedRowKeys: [], // cheeck box
+    isDetail: false,
 
-      isDetail: false,
-
-      rcvData: "",
-      rcvPcks: "",
-      multiRcvPcks: "",
-      uniRcvPcks: "",
-      xmitData: "",
-      xmitPcks: "",
-      multiXmitPcks: "",
-      uniXmitPcks: "",
-      rcvErrors: "",
-      xmitWait: "",
-      collectionTime: "",
-    };
-  }
+    rcvData: "",
+    rcvPcks: "",
+    multiRcvPcks: "",
+    uniRcvPcks: "",
+    xmitData: "",
+    xmitPcks: "",
+    multiXmitPcks: "",
+    uniXmitPcks: "",
+    rcvErrors: "",
+    xmitWait: "",
+    collectionTime: "",
+  };
 
   componentDidMount() {
     this._getEventHistoryList();
