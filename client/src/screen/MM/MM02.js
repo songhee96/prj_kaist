@@ -247,8 +247,6 @@ export default class MM01 extends React.Component {
       })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data, "확인");
-
           this.setState({
             isTrafficDetail: !this.state.isTrafficDetail,
 
