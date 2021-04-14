@@ -56,7 +56,7 @@ const trackerStyle = {
   },
 };
 
-export default class traffic extends React.Component {
+export default class traffic2 extends React.Component {
   state = {
     tracker: null,
     timerange: trafficSeries.range(),

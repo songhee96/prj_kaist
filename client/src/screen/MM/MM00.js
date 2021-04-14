@@ -6,8 +6,9 @@ import { Card, Row, Col, Tabs } from "antd";
 // import NextUI from "../../components/NextUI";
 // import Flow from "../../components/Flow";
 import D3 from "../../components/D3";
+
 import TotalTrafficChart from "../../components/TotalTrafficChart";
-// import TotalTrafficChart2 from "../../components/TotalTrafficChart2";
+import TotalTrafficChart2 from "../../components/TotalTrafficChart2";
 
 import "antd/dist/antd.dark.css";
 const { TabPane } = Tabs;
@@ -17,6 +18,7 @@ export default class MM00 extends React.Component {
 
   componentDidMount = () => {
     this._getTrafficData();
+    this._getTrafficData2();
   };
 
   render() {
@@ -44,7 +46,7 @@ export default class MM00 extends React.Component {
                           <TotalTrafficChart />
                         </TabPane>
                         <TabPane tab="HCA2" key="2">
-                          {/* <TotalTrafficChart2 /> */}
+                          <TotalTrafficChart2 />
                         </TabPane>
                       </Tabs>
                     </div>
