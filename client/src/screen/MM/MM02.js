@@ -71,10 +71,42 @@ export default class MM01 extends React.Component {
           };
         },
       },
-      { title: "Rx | Tx (bcst)", dataIndex: "capacity", align: "center" },
-      { title: "Rx | Tx (mcst)", dataIndex: "capacity", align: "center" },
       {
-        title: "Rx | Tx (IP err)",
+        title: "Rx | Tx (bcst)",
+        dataIndex: "bcst_tx",
+        align: "center",
+        render(bcst_tx, rafficHistoryList) {
+          return {
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.bcst_rx}
+                  tx={rafficHistoryList.bcst_tx}
+                />
+              </div>
+            ),
+          };
+        },
+      },
+      {
+        title: "Rx | Tx (mcst)",
+        dataIndex: "mcst_rx",
+        align: "center",
+        render(mcst_rx, rafficHistoryList) {
+          return {
+            children: (
+              <div className="MM02_traffic_wrap">
+                <TrafficChart
+                  rx={rafficHistoryList.mcst_rx}
+                  tx={rafficHistoryList.mcst_tx}
+                />
+              </div>
+            ),
+          };
+        },
+      },
+      {
+        title: "UDP err",
         dataIndex: "tx_err",
         align: "center",
         render(text) {
@@ -93,47 +125,7 @@ export default class MM01 extends React.Component {
           };
         },
       },
-      {
-        title: "Rx | Tx (TCP err)",
-        dataIndex: "tx_err",
-        align: "center",
-        render(text) {
-          return {
-            props: {
-              style: {
-                color:
-                  parseInt(text) > 84
-                    ? "red"
-                    : parseInt(text) > 70
-                    ? "orange"
-                    : "yellow",
-              },
-            },
-            children: <div>{text}</div>,
-          };
-        },
-      },
-
-      {
-        title: "Rx | Tx (UDP err)",
-        dataIndex: "tx_err",
-        align: "center",
-        render(text) {
-          return {
-            props: {
-              style: {
-                color:
-                  parseInt(text) > 84
-                    ? "red"
-                    : parseInt(text) > 70
-                    ? "orange"
-                    : "yellow",
-              },
-            },
-            children: <div>{text}</div>,
-          };
-        },
-      },
+      
       { title: "CAPACITY", dataIndex: "capacity", align: "center" },
     ];
 
