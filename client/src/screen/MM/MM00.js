@@ -4,7 +4,7 @@ import axios from "axios";
 import { Card, Row, Col } from "antd";
 
 // import NextUI from "../../components/NextUI";
-import Flow from "../../components/Flow";
+// import Flow from "../../components/Flow";
 import D3 from "../../components/D3";
 import TotalTrafficChart from "../../components/TotalTrafficChart";
 
@@ -28,8 +28,8 @@ export default class MM00 extends React.Component {
                   <Card className="topology_wrap">
                     <div className="MM00_topology_wrap">
                       {/* <NextUI /> */}
-                      <Flow />
-                      {/* <D3 /> */}
+                      {/* <Flow /> */}
+                      <D3 />
                     </div>
                   </Card>
                 </Col>
