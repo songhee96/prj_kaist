@@ -86,9 +86,9 @@ export default class MM01 extends React.Component {
             props: {
               style: {
                 color:
-                  parseInt(text) > 94
+                  parseInt(text) > 84
                     ? "red"
-                    : parseInt(text) > 85
+                    : parseInt(text) > 70
                     ? "orange"
                     : "yellow",
               },
@@ -118,7 +118,7 @@ export default class MM01 extends React.Component {
 
           <Card>
             <div className="content_wrap">
-              <Space direction="vertical" size={10}>
+              {/* <Space direction="vertical" size={10}>
                 <RangePicker
                   ranges={{
                     Today: [moment(), moment()],
@@ -129,7 +129,7 @@ export default class MM01 extends React.Component {
                   }}
                   onChange={onChange}
                 />
-              </Space>
+              </Space> */}
               <Table
                 rowSelection={rowSelection} // cheeck box
                 size="small"

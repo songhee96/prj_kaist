@@ -44,22 +44,3 @@
 .ant-card-body {
   height: 600px;
 }
-
-/* MM02 */
-#chart {
-  display: flex;
-  justify-content: center;
-}
-
-.ant-table-tbody > tr > td {
-  border: none;
-}
-
-.apexcharts-legend,
-.apexcharts-toolbar,
-.apexcharts-grid,
-.apexcharts-xaxis,
-.apexcharts-yaxis {
-  visibility: hidden;
-  display: none;
-}

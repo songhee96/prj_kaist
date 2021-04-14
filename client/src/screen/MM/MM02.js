@@ -48,7 +48,7 @@ export default class MM01 extends React.Component {
       { title: "디바이스", dataIndex: "gxpci_ethernet", align: "center" },
       { title: "인터페이스", dataIndex: "interfaces", align: "center" },
       {
-        title: "Rx | Tx",
+        title: "Rx | Tx (bits)",
         dataIndex: "",
         align: "center",
         render() {
@@ -57,7 +57,46 @@ export default class MM01 extends React.Component {
           };
         },
       },
-      { title: "에러", dataIndex: "tx_err", align: "center" },
+      {
+        title: "Rx | Tx (bcst)",
+        dataIndex: "",
+        align: "center",
+        render() {
+          return {
+            children: <TrafficChart />,
+          };
+        },
+      },
+      {
+        title: "Rx | Tx (mcst)",
+        dataIndex: "",
+        align: "center",
+        render() {
+          return {
+            children: <TrafficChart />,
+          };
+        },
+      },
+      {
+        title: "Rx | Tx (err)",
+        dataIndex: "tx_err",
+        align: "center",
+        render(text) {
+          return {
+            props: {
+              style: {
+                color:
+                  parseInt(text) > 84
+                    ? "red"
+                    : parseInt(text) > 70
+                    ? "orange"
+                    : "yellow",
+              },
+            },
+            children: <div>{text}</div>,
+          };
+        },
+      },
       { title: "CAPACITY", dataIndex: "tx_err", align: "center" },
     ];
 
