@@ -142,7 +142,7 @@ export default class MM01 extends React.Component {
 
   // 트래픽 행 클릭 > Modal
   _trafficModalHandler = async (data) => {
-    // console.log(data, "트래픽 행 클릭 데이터");
+    console.log(data, "트래픽 행 클릭 데이터");
     this.setState({
       isTrafficDetail: !this.state.isTrafficDetail,
 
