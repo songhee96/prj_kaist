@@ -8,6 +8,9 @@ totalTrafficChartRouter.get(
   routes.getTotalTrafficChartData,
   totalTrafficChartController.getTotalTrafficChartData
 );
-
+totalTrafficChartRouter.post(
+  routes.getTrafficChartData,
+  totalTrafficChartController.getTrafficChartData
+);
 
 module.exports = totalTrafficChartRouter;
