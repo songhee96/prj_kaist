@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Tabs } from "antd";
 
 // import NextUI from "../../components/NextUI";
 // import Flow from "../../components/Flow";
@@ -9,6 +9,7 @@ import D3 from "../../components/D3";
 import TotalTrafficChart from "../../components/TotalTrafficChart";
 
 import "antd/dist/antd.dark.css";
+const { TabPane } = Tabs;
 
 export default class MM00 extends React.Component {
   state = {};
@@ -37,7 +38,14 @@ export default class MM00 extends React.Component {
                 <Col span={24}>
                   <Card className="traffic_chart_wrap">
                     <div className="MM00_traffic_chart">
-                      <TotalTrafficChart />
+                       <Tabs defaultActiveKey="1" type="card" size="small">
+                        <TabPane tab="HCA1" key="1">
+                          <TotalTrafficChart />
+                        </TabPane>
+                        <TabPane tab="HCA2" key="2">
+                          <TotalTrafficChart />
+                        </TabPane>
+                      </Tabs>
                     </div>
                   </Card>
                 </Col>
