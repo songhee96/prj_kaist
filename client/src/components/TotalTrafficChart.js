@@ -68,6 +68,38 @@ export default class traffic extends React.Component {
     ],
   };
 
+  componentDidMount() {
+    const trafficRXseries = new TimeSeries({
+      name: "trafficRX",
+      columns: ["time", "in"],
+      points: _.map(this.props.rx, (p) => [p[0] * 1000, p[1]]),
+    });
+
+    const trafficTXseries = new TimeSeries({
+      name: "trafficTX",
+      columns: ["time", "out"],
+      points: _.map(this.props.tx, (p) => [p[0] * 1000, p[1]]),
+    });
+
+    const trafficSeries = TimeSeries.timeSeriesListMerge({
+      name: "traffic",
+      seriesList: [trafficRXseries, trafficTXseries],
+    });
+
+    const upDownStyle = styler([
+      { key: "in", color: "#C8D5B8" },
+      { key: "out", color: "#9BB8D7" },
+    ]);
+
+    const trackerStyle = {
+      line: {
+        stroke: "#a62011",
+        cursor: "crosshair",
+        pointerEvents: "none",
+      },
+    };
+  }
+
   handleTrackerChanged = (t, scale) => {
     this.setState({
       tracker: t,
