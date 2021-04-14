@@ -7,7 +7,22 @@ import TotalTrafficChart from "../../components/TotalTrafficChart";
 import "antd/dist/antd.dark.css";
 
 export default class MM00 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      txTrafficData: [],
+      rxTrafficData: [],
+    };
+  }
+
+  componentDidMount = () => {
+    this._getTrafficData();
+  };
+
   render() {
+    const { txTrafficData, rxTrafficData } = this.state;
+
     return (
       <>
         <div className="MM00 pages">
@@ -25,7 +40,11 @@ export default class MM00 extends React.Component {
                 <Col span={24}>
                   <Card className="traffic_chart_wrap">
                     <div className="MM00_traffic_chart">
-                      <TotalTrafficChart />
+                      <TotalTrafficChart
+                        tx={txTrafficData}
+                        rx={rxTrafficData}
+                        dd={"ddd"}
+                      />
                     </div>
                   </Card>
                 </Col>
@@ -36,4 +55,19 @@ export default class MM00 extends React.Component {
       </>
     );
   }
+
+  // TotalTrafficChart 데이터 가져오기
+  _getTrafficData = async () => {
+    // console.log("차트 데이터 가져오기");
+
+    await fetch("/api/getTotalTrafficChartData")
+      .then((res) => res.json())
+      .then((data) =>
+        // console.log(data, "차트 데이터 확인")
+        this.setState({
+          txTrafficData: data.txTrafficData,
+          rxTrafficData: data.rxTrafficData,
+        })
+      );
+  };
 }
